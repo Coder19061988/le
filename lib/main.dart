@@ -6,4 +6,12 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 
-class Doc(){};
+class Dog{
+
+int id;
+String name;
+int age;
+
+Dog({this.id, this.age, this.name})
+
+}
