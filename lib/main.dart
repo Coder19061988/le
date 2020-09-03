@@ -53,10 +53,6 @@ class Dog {
 
 //-------------------------------------Функция возвращает класс как структура
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'age': age,
-    };
+    return {'id': id, 'name': name};
   }
 }
