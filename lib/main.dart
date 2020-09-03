@@ -24,11 +24,39 @@ void main() async {
     // path to perform database upgrades and downgrades.
     version: 1,
   );
+
+  ///////////////////////////////////////////////////////////////////
+// Добавление записи в базу
+  Future<void> add_Dog(Dog dog) async {
+    // Get a reference to the database.
+    final Database db = await database;
+
+    // Insert the Dog into the correct table. Also specify the
+    // `conflictAlgorithm`. In this case, if the same dog is inserted
+    // multiple times, it replaces the previous data.
+    await db.insert(
+      'dogs',
+      dog.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
 }
 
+///////////////////////////////////////////////////////////////////
+// Dog
 class Dog {
   int id;
   String name;
 
-  Dog(this.id, this.name);
+//-------------------------------------Конструктор класса
+  Dog({this.id, this.name});
+
+//-------------------------------------Функция возвращает класс как структура
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'age': age,
+    };
+  }
 }
